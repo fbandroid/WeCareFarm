@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".view.ApproveDeliveryByAgent"
+    tools:showIn="@layout/activity_approve_delivery_by_agent">
+
+    <LinearLayout
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="18sp"
+            tools:text="Order packed"
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            tools:text="Order Id:- 242342"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:id="@+id/tvOrderId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            tools:text="order date:- 18-7-2018"
+            android:layout_marginTop="16dp"
+            android:id="@+id/tvOrderDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:id="@+id/tvName"
+            tools:text="Mr Akash Ambani"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+             tools:text="8 A mahavirnagar himatnagar\n Sabarkantha 383001"
+             android:layout_marginTop="16dp"
+             android:textSize="14sp"
+             android:id="@+id/tvAddr"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/tvTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="Payable Amount: Rs 900" />
+
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:textSize="14sp"
+            android:id="@+id/tvMobile"
+            tools:text="9538943583"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="16dp"
+            android:id="@+id/txtInReceivedAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:inputType="numberDecimal"
+                android:id="@+id/edtReceivedAmount"
+                android:hint="Received Amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="16dp"
+            android:id="@+id/txtInReceivedBy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:lines="4"
+                android:gravity="start"
+                android:id="@+id/edtReceivedBy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Remark*"
+                android:inputType="text|textMultiLine"
+                android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+        <LinearLayout
+            android:layout_weight="2"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:text="Deliver"
+                android:textColor="@android:color/white"
+                android:background="@color/colorPrimaryDark"
+                android:id="@+id/btnMakeDelivery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:text="Cancel Order"
+                android:textColor="@android:color/white"
+                android:background="@color/colorPrimaryDark"
+                android:id="@+id/btnCancelDelivery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+</ScrollView>

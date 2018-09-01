@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_offer_zone"
+            android:icon="@drawable/ic_local_offer_black_24dp"
+            android:title="@string/offer_zone" />
+        <item
+            android:id="@+id/nav_notification"
+            android:icon="@drawable/ic_notifications_black_24dp"
+            android:title="@string/notification" />
+
+    </group>
+
+    <item android:title="@string/my_account">
+
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_my_account"
+                    android:icon="@drawable/ic_people_black_24dp"
+                    android:title="@string/my_account" />
+
+                <item
+                    android:id="@+id/nav_my_order"
+                    android:icon="@drawable/ic_shop_black_24dp"
+                    android:title="@string/my_orders" />
+
+                <item
+                    android:id="@+id/nav_my_wishList"
+                    android:icon="@drawable/ic_favorite_black_24dp"
+                    android:title="@string/my_wishlists" />
+
+            </group>
+
+
+        </menu>
+
+
+    </item>
+
+</menu>

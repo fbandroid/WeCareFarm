@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_LogOut"
+        android:orderInCategory="100"
+        android:title="LogOut"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_change_pwd" android:orderInCategory="105" android:title="Change password"
+        app:showAsAction="never"/>
+
+     <item
+         app:showAsAction="always"
+         android:orderInCategory="102"
+         android:icon="@drawable/ic_notifications_black_24dp"
+         android:title="@string/notification"
+         android:id="@+id/action_notification"/>
+
+    <item
+        app:showAsAction="always"
+        android:icon="@drawable/ic_shopping_cart_white_24dp"
+        android:orderInCategory="103"
+        android:title="@string/my_cart"
+        app:actionLayout="@layout/custom_notification_badge"
+        android:id="@+id/action_my_cart"/>
+
+
+</menu>

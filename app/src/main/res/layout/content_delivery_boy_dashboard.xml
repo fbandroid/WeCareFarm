@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".view.DeliveryBoyDashboard"
+    tools:showIn="@layout/activity_delivery_boy_dashboard">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cvTodayDelivery"
+        android:layout_width="96dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="16dp"
+        android:elevation="2dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="@+id/cvSearchOrder"
+        app:layout_constraintEnd_toStartOf="@+id/cvSearchOrder"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cvSearchOrder">
+
+
+        <TextView
+            android:id="@+id/tvTodayDelivery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_view_list_black_24dp"
+            android:gravity="center"
+            android:text="Today's\nDelivery"
+            android:textColor="@android:color/black" />
+
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cvSearchOrder"
+        android:layout_width="96dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:elevation="2dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toStartOf="@+id/cvPaymentHistory"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cvTodayDelivery"
+        app:layout_constraintTop_toBottomOf="@+id/tvUserName">
+
+
+        <TextView
+            android:id="@+id/tvSearchOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_search_black_24dp"
+            android:gravity="center"
+            android:text="View History\n "
+            android:textColor="@android:color/black" />
+
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+
+        android:id="@+id/cvPaymentHistory"
+        android:layout_width="96dp"
+        android:layout_height="120dp"
+        android:layout_marginEnd="16dp"
+        android:elevation="2dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cvSearchOrder"
+        app:layout_constraintTop_toTopOf="@+id/cvSearchOrder">
+
+
+        <TextView
+            android:id="@+id/tvViewPaymentHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_payment_black_24dp"
+            android:gravity="center"
+            android:text="View Payment\nHistory"
+            android:textColor="@android:color/black" />
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+
+        android:id="@+id/cvTodayCollection"
+        android:layout_width="96dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="8dp"
+        android:elevation="2dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="@+id/cvSearchOrder"
+        app:layout_constraintStart_toStartOf="@+id/cvSearchOrder"
+        app:layout_constraintTop_toBottomOf="@+id/cvSearchOrder">
+
+
+        <TextView
+            android:id="@+id/tvTodayCollection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_payment_black_24dp"
+            android:gravity="center"
+            android:text="Today's \nCollection"
+            android:textColor="@android:color/black" />
+
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+
+        android:id="@+id/cvCollectOrder"
+        android:layout_width="96dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="8dp"
+        android:elevation="2dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="@+id/cvTodayDelivery"
+        app:layout_constraintStart_toStartOf="@+id/cvTodayDelivery"
+        app:layout_constraintTop_toBottomOf="@+id/cvTodayDelivery">
+
+
+        <TextView
+            android:id="@+id/tvCollectOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_view_list_black_24dp"
+            android:gravity="center"
+            android:text="Collect Order"
+            android:textColor="@android:color/black" />
+
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cvMyAccount"
+        android:layout_width="96dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="8dp"
+        android:elevation="2dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="@+id/cvPaymentHistory"
+        app:layout_constraintStart_toStartOf="@+id/cvPaymentHistory"
+        app:layout_constraintTop_toBottomOf="@+id/cvTodayDelivery">
+
+
+        <TextView
+            android:id="@+id/tvMyAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_my_account"
+            android:gravity="center"
+            android:text="My Account"
+            android:textColor="@android:color/black" />
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="#64b5f6"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/cvTodayDelivery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Dk Agent" />
+
+
+</android.support.constraint.ConstraintLayout>
