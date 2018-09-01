@@ -413,8 +413,13 @@ class UserDashBoard22 : AppCompatActivity(), NavigationView.OnNavigationItemSele
                                         }
                                         response!!.body()!!.msg.equals("5x", true) -> {
                                             Toast.makeText(this@UserDashBoard22, "Max Limit reached", Toast.LENGTH_LONG).show()
-                                             alertDialog.dismiss()
+                                            alertDialog.dismiss()
                                         }
+                                        response!!.body()!!.msg.equals("1x", true) -> {
+                                            Toast.makeText(this@UserDashBoard22, "User already added", Toast.LENGTH_LONG).show()
+                                            alertDialog.dismiss()
+                                        }
+
                                     }
 
 
