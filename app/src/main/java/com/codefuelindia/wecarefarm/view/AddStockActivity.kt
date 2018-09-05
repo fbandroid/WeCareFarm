@@ -55,6 +55,8 @@ class AddStockActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_stock)
         setSupportActionBar(toolbar)
 
+
+
         addStockByFarmer = addStockServices()
 
         getAllProducts = getAllProductListService(Constants.BASE_URL)
