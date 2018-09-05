@@ -137,7 +137,7 @@ class AddStockActivity : AppCompatActivity() {
                 val addStock = AddStock()
                 addStock.allProductLists = stockSelectedArray
 
-                Log.e("stock array", Gson().toJson(addStock))
+                Log.e("stock array json", Gson().toJson(addStock))
 
 
                 val loader = showLoader()
