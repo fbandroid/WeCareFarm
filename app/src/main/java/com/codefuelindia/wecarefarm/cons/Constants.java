@@ -15,7 +15,7 @@ public class Constants {
     public static final String MEMBER_NO = "mem_no";
     public static final String MEMBER_STATUS = "mem_status";
     public static final String GOR = "gor";
-    public static final String BASE_URL = "http://code-fuel.in/mandi/";
+    public static final String BASE_URL = "http://www.kishanebazar.in/";
     public static final String root = "BA326C6BC3AD52ED2861784D680D2348F2F8DFB9131DF2AAECBFBE20C1884FF7";
     public static final String MAP_URL = "https://maps.googleapis.com/";
     public static final int SUCCESS_RESULT = 0;
