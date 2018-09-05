@@ -343,10 +343,7 @@ class UserDashBoard22 : AppCompatActivity(), NavigationView.OnNavigationItemSele
         val inflater = this.layoutInflater
         val dialogView = inflater.inflate(R.layout.row_dialog_referel, null)
         dialogBuilder.setView(dialogView)
-//
-//          GlideApp.with(this@HomeActivity)
-//                  .load(this@HomeActivity?.getDrawable(R.drawable.loader)).apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
-//                  .into(dialogView.findViewById<ImageView>(R.id.ivGif))
+
         dialogBuilder.setCancelable(false)
 
 
@@ -403,12 +400,12 @@ class UserDashBoard22 : AppCompatActivity(), NavigationView.OnNavigationItemSele
                                             Toast.makeText(this@UserDashBoard22, "Added Successfully", Toast.LENGTH_LONG).show()
                                             alertDialog.dismiss()
                                         }
-                                        response!!.body()!!.msg.equals("false", true) -> {
-                                            Toast.makeText(this@UserDashBoard22, "Error occurred", Toast.LENGTH_LONG).show()
+                                        response!!.body()!!.msg.equals("3x", true) -> {
+                                            Toast.makeText(this@UserDashBoard22, "Your mobile number is not allowed", Toast.LENGTH_LONG).show()
                                             alertDialog.dismiss()
                                         }
-                                        response!!.body()!!.msg.equals("xxx", true) -> {
-                                            Toast.makeText(this@UserDashBoard22, "User Does not exists", Toast.LENGTH_LONG).show()
+                                        response!!.body()!!.msg.equals("2x", true) -> {
+                                            Toast.makeText(this@UserDashBoard22, "This user is not available", Toast.LENGTH_LONG).show()
                                             alertDialog.dismiss()
                                         }
                                         response!!.body()!!.msg.equals("5x", true) -> {
@@ -443,10 +440,7 @@ class UserDashBoard22 : AppCompatActivity(), NavigationView.OnNavigationItemSele
         }
 
         btnCancel.setOnClickListener {
-
             alertDialog.dismiss()
-
-
         }
 
 
