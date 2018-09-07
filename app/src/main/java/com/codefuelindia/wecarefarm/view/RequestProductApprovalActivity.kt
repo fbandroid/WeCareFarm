@@ -114,6 +114,9 @@ class RequestProductApprovalActivity : AppCompatActivity() {
                 addStock.fid = id
                 addStock.allProductLists = stockSelectedArray
 
+
+                Log.e("request json",Gson().toJson(addStock))
+
                 val loader = showLoader()
 
                 addProductRequestByFarmer.addStockToGodown(addStock).enqueue(object : Callback<MyRes> {
