@@ -62,6 +62,7 @@ class UserDashBoard22 : AppCompatActivity(), NavigationView.OnNavigationItemSele
     private var handler:Handler = Handler()
     private lateinit var runnable:Runnable
     private var getBanner: GetBanner? = null
+    private var refMobile :String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -286,6 +287,7 @@ class UserDashBoard22 : AppCompatActivity(), NavigationView.OnNavigationItemSele
                 editor.putString(Constants.NAME, null)
                 editor.putString(Constants.ID, null)
                 editor.putString(Constants.ROLE, null)
+                editor.putBoolean(Constants.IS_REF_ADDED,false)
                 editor.apply()
 
 
@@ -343,7 +345,16 @@ class UserDashBoard22 : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
             R.id.nav_my_referel -> {
 
-                showReferelDialog()
+                if(Utils.getSharedPreference(Constants.MY_PREF,this@UserDashBoard22).getBoolean(Constants.IS_REF_ADDED,false)){
+                   showReferelDialog(1)
+
+                }
+                else{
+                    showReferelDialog(0)
+                }
+
+
+
 
 
             }
@@ -415,7 +426,7 @@ class UserDashBoard22 : AppCompatActivity(), NavigationView.OnNavigationItemSele
     }
 
 
-    fun showReferelDialog() {
+    fun showReferelDialog(type:Int) {
 
 
         val dialogBuilder = AlertDialog.Builder(this@UserDashBoard22 as Context)
@@ -444,9 +455,32 @@ class UserDashBoard22 : AppCompatActivity(), NavigationView.OnNavigationItemSele
         val progressBar = dialogView.findViewById<ProgressBar>(R.id.progressBar2)
         progressBar.visibility = View.GONE
 
+
+        if (type == 0){
+
+        }
+        else{
+            btnAdd.visibility = View.GONE
+            edtMobile.text = Utils.getSharedPreference(Constants.MY_PREF,this@UserDashBoard22).getString(Constants.REF_MOBILE,"")
+            edtMobile.isEnabled = false
+            edtMobile.isClickable = false
+            btnCancel.visibility = View.GONE
+            tvReferelLable.text = "My Referer"
+            dialogBuilder.setCancelable(true)
+
+        }
+
+
+
+
         val alertDialog = dialogBuilder.create()
         // alertDialog.window.setBackgroundDrawable(this@HomeActivity?.getDrawable(android.R.color.transparent))
         alertDialog.show()
+
+
+
+
+
 
         btnAdd.setOnClickListener {
 
@@ -455,6 +489,8 @@ class UserDashBoard22 : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
                 btnAdd.isEnabled = false
                 progressBar.visibility = View.VISIBLE
+
+                refMobile = edtMobile.text.toString().trim()
 
                 addReferer.addRefererOfUser(id, edtMobile.text.toString().trim()).enqueue(
                         object : Callback<MyRes> {
@@ -477,6 +513,10 @@ class UserDashBoard22 : AppCompatActivity(), NavigationView.OnNavigationItemSele
                                     when {
                                         response!!.body()!!.msg.equals("true", true) -> {
                                             Toast.makeText(this@UserDashBoard22, "Added Successfully", Toast.LENGTH_LONG).show()
+                                            val editor = Utils.writeToPreference(Constants.MY_PREF, this@UserDashBoard22)
+                                            editor.putBoolean(Constants.IS_REF_ADDED,true).apply()
+                                            editor.putString(Constants.REF_MOBILE,refMobile).apply()
+
                                             alertDialog.dismiss()
                                         }
                                         response!!.body()!!.msg.equals("3x", true) -> {
@@ -524,6 +564,9 @@ class UserDashBoard22 : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
 
     }
+
+
+
 
 
     interface AddReferer {

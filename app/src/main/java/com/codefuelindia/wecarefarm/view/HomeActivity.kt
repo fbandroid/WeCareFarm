@@ -226,6 +226,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 editor.putString(Constants.NAME, null)
                 editor.putString(Constants.ID, null)
                 editor.putString(Constants.ROLE, null)
+                editor.putBoolean(Constants.IS_REF_ADDED, false)
+
                 editor.apply()
                 DestroyCartOnLogOut().execute()
 
@@ -556,62 +558,52 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
 
+    fun showReferelDialog() {
 
 
-      fun showReferelDialog(){
-
-
-          val dialogBuilder = AlertDialog.Builder(this@HomeActivity as Context)
-          val inflater = this.layoutInflater
-          val dialogView = inflater.inflate(R.layout.row_dialog_referel, null)
-          dialogBuilder.setView(dialogView)
+        val dialogBuilder = AlertDialog.Builder(this@HomeActivity as Context)
+        val inflater = this.layoutInflater
+        val dialogView = inflater.inflate(R.layout.row_dialog_referel, null)
+        dialogBuilder.setView(dialogView)
 //
 //          GlideApp.with(this@HomeActivity)
 //                  .load(this@HomeActivity?.getDrawable(R.drawable.loader)).apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
 //                  .into(dialogView.findViewById<ImageView>(R.id.ivGif))
-          dialogBuilder.setCancelable(false)
+        dialogBuilder.setCancelable(false)
 
 
-          val tvReferelName = dialogView.findViewById<TextView>(R.id.tvRefererName)
-          val tvReferelLable = dialogView.findViewById<TextView>(R.id.tvLableReferel)
+        val tvReferelName = dialogView.findViewById<TextView>(R.id.tvRefererName)
+        val tvReferelLable = dialogView.findViewById<TextView>(R.id.tvLableReferel)
 
 
-          tvReferelName.visibility = View.GONE
+        tvReferelName.visibility = View.GONE
 
 
-          tvReferelLable.text = "Add Referer"
+        tvReferelLable.text = "Add Referer"
 
-          val edtMobile = dialogView.findViewById<TextView>(R.id.edtMobile)
+        val edtMobile = dialogView.findViewById<TextView>(R.id.edtMobile)
 
-          val btnAdd = dialogView.findViewById<TextView>(R.id.btnAdd)
+        val btnAdd = dialogView.findViewById<TextView>(R.id.btnAdd)
 
-          val btnCancel = dialogView.findViewById<TextView>(R.id.btnCancel)
-          val alertDialog = dialogBuilder.create()
-          // alertDialog.window.setBackgroundDrawable(this@HomeActivity?.getDrawable(android.R.color.transparent))
-          alertDialog.show()
+        val btnCancel = dialogView.findViewById<TextView>(R.id.btnCancel)
+        val alertDialog = dialogBuilder.create()
+        // alertDialog.window.setBackgroundDrawable(this@HomeActivity?.getDrawable(android.R.color.transparent))
+        alertDialog.show()
 
-          btnAdd.setOnClickListener {
-
-
-          }
-
-          btnCancel.setOnClickListener {
-
-              alertDialog.dismiss()
+        btnAdd.setOnClickListener {
 
 
-          }
+        }
+
+        btnCancel.setOnClickListener {
+
+            alertDialog.dismiss()
 
 
+        }
 
 
-
-
-
-
-
-
-      }
+    }
 
 
 }

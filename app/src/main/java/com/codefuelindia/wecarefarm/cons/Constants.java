@@ -11,6 +11,8 @@ public class Constants {
     public static final String NAME = "name";
     public static final String ROLE = "role";
     public static final String GID = "gid";
+    public static final String IS_REF_ADDED = "is_ref_added";
+    public static final String REF_MOBILE = "ref_mobile";
     public static final String MEMBER_ID = "mem_id";
     public static final String MEMBER_NO = "mem_no";
     public static final String MEMBER_STATUS = "mem_status";

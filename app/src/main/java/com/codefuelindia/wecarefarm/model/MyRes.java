@@ -47,6 +47,30 @@ public class MyRes {
     @Expose
     private String gid;
 
+    public String getRef_status() {
+        return ref_status;
+    }
+
+    public void setRef_status(String ref_status) {
+        this.ref_status = ref_status;
+    }
+
+    @SerializedName("ref_status")
+    @Expose
+    private String ref_status;
+
+    public String getRef_mobile() {
+        return ref_mobile;
+    }
+
+    public void setRef_mobile(String ref_mobile) {
+        this.ref_mobile = ref_mobile;
+    }
+
+    @SerializedName("ref_mobile")
+    @Expose
+    private String ref_mobile;
+
     public String getAddr() {
         return addr;
     }

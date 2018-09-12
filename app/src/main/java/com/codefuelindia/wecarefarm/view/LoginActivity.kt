@@ -141,6 +141,15 @@ class LoginActivity : AppCompatActivity() {
                                             editor.putString(Constants.NAME, response.body()!!.name)
                                             editor.putString(Constants.ROLE, response.body()!!.role)
                                             editor.putString(Constants.GID, response.body()!!.gid)
+                                            editor.putString(Constants.REF_MOBILE,response.body()!!.ref_mobile)
+
+                                            if (response.body()!!.ref_status == "1") {
+                                                editor.putBoolean(Constants.IS_REF_ADDED, true)
+                                            } else {
+                                                editor.putBoolean(Constants.IS_REF_ADDED, false)
+                                            }
+
+
                                             editor.putBoolean(Constants.IS_LOGIN, true)
                                             editor.apply()
                                             Toast.makeText(this@LoginActivity, "Successfully login", Toast.LENGTH_LONG).show()
