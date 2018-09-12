@@ -42,3 +42,59 @@
 -keep class * implements com.google.gson.JsonSerializer
 -keep class * implements com.google.gson.JsonDeserializer
 
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+# ItextG
+-keep class org.spongycastle.** { *; }
+-dontwarn org.spongycastle.**
+
+-keep class com.itextpdf.** { *; }
+
+-keep class javax.xml.crypto.dsig.** { *; }
+-dontwarn javax.xml.crypto.dsig.**
+
+-keep class org.apache.jcp.xml.dsig.internal.dom.** { *; }
+-dontwarn org.apache.jcp.xml.dsig.internal.dom.**
+
+-keep class javax.xml.crypto.dom.** { *; }
+-dontwarn javax.xml.crypto.dom.**
+
+-keep class org.apache.xml.security.utils.** { *; }
+-dontwarn org.apache.xml.security.utils.**
+
+-keep class javax.xml.crypto.XMLStructure
+-dontwarn javax.xml.crypto.XMLStructure
+
+# Okhttp3
+-dontwarn okio.**
+-dontwarn com.squareup.okhttp3.**
+-keep class com.squareup.okhttp3.** { *; }
+-keep interface com.squareup.okhttp3.* { *; }
+-dontwarn javax.annotation.Nullable
+-dontwarn javax.annotation.ParametersAreNonnullByDefault
+-dontwarn javax.annotation.**
+
+# A resource is loaded with a relative path so the package of this class must be preserved.
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+
+# Animal Sniffer compileOnly dependency to ensure APIs are compatible with older versions of Java.
+-dontwarn org.codehaus.mojo.animal_sniffer.*
+
+# OkHttp platform used only on JVM and when Conscrypt dependency is available.
+-dontwarn okhttp3.internal.platform.ConscryptPlatform
+
+# Retrofit
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
+
+-keep class com.codefuelindia.wecarefarm.model.** { *; }
+
+-keepclasseswithmembers class * {
+    @retrofit2.http.* <methods>;
+}

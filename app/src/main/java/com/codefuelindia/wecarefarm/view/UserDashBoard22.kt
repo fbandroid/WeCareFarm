@@ -4,10 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
+import android.os.Handler
 import android.os.SystemClock
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
+import android.support.v4.view.ViewPager
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -25,6 +27,8 @@ import com.codefuelindia.wecarefarm.common.RetrofiltClient
 import com.codefuelindia.wecarefarm.cons.Constants
 import com.codefuelindia.wecarefarm.db.Cart
 import com.codefuelindia.wecarefarm.db.CartDatabase
+import com.codefuelindia.wecarefarm.model.Banner
+import com.codefuelindia.wecarefarm.model.MyBanner
 import com.codefuelindia.wecarefarm.model.MyRes
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
@@ -49,19 +53,21 @@ class UserDashBoard22 : AppCompatActivity(), NavigationView.OnNavigationItemSele
     private var mCartItemCount = 0
     private var mTextCartCounter: TextView? = null
     private lateinit var dbInstance: CartDatabase
-    private val currentPage = 0
+    private var currentPage = 0
     private val XMEN = arrayOf<Int>(R.drawable.codefuellogo2, R.drawable.codefuellogo2, R.drawable.codefuellogo2, R.drawable.codefuellogo2)
-    private val XMENArray = ArrayList<Int>()
+    private val XMENArray = ArrayList<String>()
     private var lastclick = 0L
     lateinit var mAdView: AdView
     private lateinit var addReferer: AddReferer
-
+    private var handler:Handler = Handler()
+    private lateinit var runnable:Runnable
+    private var getBanner: GetBanner? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_dash_board22)
         setSupportActionBar(toolbar)
-
+        getBanner = showBanner(Constants.BASE_URL)
         dbInstance = CartDatabase.getDatabase(applicationContext)
         addReferer = RetrofiltClient.getRettofitClient(Constants.BASE_URL, "x").create(AddReferer::class.java)
 
@@ -109,17 +115,90 @@ class UserDashBoard22 : AppCompatActivity(), NavigationView.OnNavigationItemSele
         }
 
 
+       getBanner?.banner!!.enqueue(object:Callback<MyBanner>{
+           override fun onFailure(call: Call<MyBanner>, t: Throwable) {
 
-        for (i in 0 until XMEN.size)
-            XMENArray.add(XMEN[i])
 
-        viewPager.adapter = MyAdapter(this@UserDashBoard22, XMENArray)
+
+           }
+
+           override fun onResponse(call: Call<MyBanner>, response: Response<MyBanner>) {
+
+                     if (response!!.isSuccessful){
+
+                         val bannerArrayList = response.body()!!.banner as java.util.ArrayList<Banner>
+                         if (bannerArrayList != null && bannerArrayList.size > 0) {
+
+                             for (i in bannerArrayList.indices) {
+                                 XMENArray.add(Constants.BASE_URL.plus("banner/").plus(bannerArrayList[i].image))
+                             }
+
+                              init()
+
+                         }
+
+                     }
+
+           }
+
+
+       })
+
+
+
+
+
+      ///  viewPager.adapter = MyAdapter(this@UserDashBoard22, XMENArray)
 
 
         val tvTitle = nav_view.getHeaderView(0).findViewById<TextView>(R.id.tvTitleOfUser)
         tvTitle.text = title
 
         nav_view.setNavigationItemSelectedListener(this)
+    }
+
+
+    fun init(){
+
+         runnable = Runnable {
+
+            if (currentPage == XMENArray.size) {
+                currentPage = 0
+            }
+            viewPager.setCurrentItem(currentPage++, true)
+            handler.postDelayed(runnable, 2000)
+
+        }
+
+        handler.post(runnable)
+
+
+
+        viewPager.adapter = MyAdapter(this,XMENArray)
+        indicator.setViewPager(viewPager)
+
+
+         viewPager.addOnPageChangeListener(object :ViewPager.OnPageChangeListener{
+             override fun onPageScrollStateChanged(state: Int) {
+
+             }
+
+             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+             }
+
+             override fun onPageSelected(position: Int) {
+                 currentPage = position
+             }
+
+
+         })
+
+        if (handler != null) {
+            handler.removeCallbacks(null)
+        }
+
+
     }
 
     override fun onBackPressed() {
@@ -457,4 +536,15 @@ class UserDashBoard22 : AppCompatActivity(), NavigationView.OnNavigationItemSele
     }
 
 
+    internal interface GetBanner {
+
+        @get:POST("banner/bannerlistapi/")
+        val banner: Call<MyBanner>
+
+    }
+
+
+    private fun showBanner(baseUrl: String): GetBanner {
+        return RetrofiltClient.getRettofitClient(baseUrl,"").create(GetBanner::class.java)
+    }
 }

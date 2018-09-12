@@ -57,10 +57,6 @@ class UserDashboard1 : AppCompatActivity() {
 
 
 
-        for (i in 0 until XMEN.size)
-            XMENArray.add(XMEN[i])
-
-        viewPager.adapter = MyAdapter(this@UserDashboard1, XMENArray)
 
     }
 
